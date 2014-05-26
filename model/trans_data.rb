@@ -1,0 +1,2 @@
+class TransData < DomainData
+end

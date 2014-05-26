@@ -1,0 +1,2 @@
+class CITTransData < DomainData
+end

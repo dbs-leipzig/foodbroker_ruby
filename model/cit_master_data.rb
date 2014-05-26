@@ -1,0 +1,2 @@
+class CITMasterData < MasterData
+end

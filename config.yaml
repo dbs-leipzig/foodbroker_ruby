@@ -1,0 +1,96 @@
+# "SF" abbreviates Scale Factor
+# "infl:" influence per involved master data object
+#         > 0 good master data increases value
+#         < 0 good master data decreases value
+
+MasterData:
+  Employee:
+    offset: 15          # minimum number of employees
+    growth: 0.2         # additional employees per SF
+    good: 0.2           # proportion of good employees
+    bad:  0.2           # proportion of bad employees
+  Product:
+    offset: 100         # minimum number of products
+    growth: 0.1         # additional products per SF
+    good: 0.1           # proportion of good products
+    bad: 0.1            # proportion of bad products
+    price:              # list price per unit
+      min: 0.5                 
+      max: 8.5            
+  Customer:
+    offset: 20          # minimum number of customers
+    growth: 0.2         # additional employees per SF
+    good: 0.1           # proportion of good products
+    bad: 0.1            # proportion of bad products
+  Vendor:
+    offset: 10          # minimum number of vendors
+    growth: 0.1         # additional vendors per SF
+    good: 0.1           # proportion of good products
+    bad: 0.1            # proportion of bad products
+  Logistics:
+    offset: 10          # minimum number of logistics companies
+    growth: 0.0         # additional logistics companies per SF
+    good: 0.1           # proportion of good logistics companies
+    bad: 0.1            # proportion of bad logistics companies
+FoodBrokerage:
+  Process:
+    growth: 100         # number of simulated cases per SF
+    date:               # simulated period
+      min: 2013-01-01       
+      max: 2013-12-31       
+  Quotation:
+    lines:              # number of lines per quotation
+      min: 1                
+      max: 10               
+    margin:             # sales margin
+      base: 0.05            
+      infl: 0.02  
+    quantity:           # product quantity
+      min: 1
+      max: 100              
+  SalesOrder:
+    conf_prob:             # probability of confirmation
+      base: 0.6           
+      infl: 0.2   
+    line_prob:        # probability of turning a   
+      base: 0.9       # QuotationLine into a SalesOrderLine   
+      infl: 0.0      
+    days2conf:            # confirmation delay
+        min: 0             
+        max: 20
+        infl: 5     
+    days2delivery:      # agreed delivery time
+      min: 2                
+      max: 4
+      infl: 1
+    days2purchase:      # delay to PurchOrder
+      min: 0
+      max: 2
+      infl: 2
+    days2invoice:       # delay to SalesInvoice
+      min: 0
+      max: 3
+      infl: 2
+  PurchOrder:
+    days2delivery:      # delay to DeliveryNote
+      min: 0                
+      max: 1
+      infl: 2
+    days2invoice:       # delay to PurchInvoice
+      min: 2
+      max: 5
+      infl: -3
+    price_variation:    # variation of actual purchase price
+      base: 0.01
+      infl: -0.02   
+Complaints:
+  Ticket:
+    bad_quality:        # probability of bad quality complaints
+      base: 0.05
+      infl: -0.1
+    sales_refund:       # relative refund to customers
+      base: 0.1
+      infl: -0.05
+    purch_refund:       # relative refund from vendors
+      base: 0.1
+      infl: 0.05
