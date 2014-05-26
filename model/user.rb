@@ -1,6 +1,10 @@
 class User < CITMasterData
   attr_reader :email, :erp_empl_num
   
+  def User.duck
+    User.new Employee.duck
+  end
+  
   def initialize employee
     @name = employee.name
     @email = employee.name.sub(' ','.').downcase + '@foodbroker.org'

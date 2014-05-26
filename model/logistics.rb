@@ -1,4 +1,9 @@
 class Logistics < ERPMasterData
+  
+  def Logistics.duck
+    Logistics.new :kind
+  end
+  
   def initialize kind
     @name = "#{NAMES[:logistics][:adj].sample} #{NAMES[:logistics][:noun].sample}"
     super kind

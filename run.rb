@@ -13,7 +13,8 @@ cases = (1..conf['Process']['growth']*SF)
 cases.each do |i| 
   puts "-"*50 + "#{i}/#{conf['Process']['growth']*SF}" + "-"*50
   fb = FoodBrokerage.new dates[i*dates.size/cases.size]
-  puts fb.tdos
+  #puts fb.tdos
   cp = Complaints.new fb
-  puts cp.tdos
+  #puts cp.tdos
 end
+
