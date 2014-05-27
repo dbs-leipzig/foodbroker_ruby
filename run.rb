@@ -21,8 +21,8 @@ store = FoodBroker2Sql.new
 store.prepare!
   
 cases.each do |i|
-  print "." 
-  puts SF if i % 100 == 0
+  print "." if i%100    == 0
+  puts SF   if i%10000  == 0
 
   fb = FoodBrokerage.new dates[i*dates.size/cases.size]
   store.record fb.tdos

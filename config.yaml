@@ -5,12 +5,12 @@
 
 MasterData:
   Employee:
-    offset: 15          # minimum number of employees
-    growth: 0.2         # additional employees per SF
-    good: 0.2           # proportion of good employees
-    bad:  0.2           # proportion of bad employees
+    offset: 30          # minimum number of employees
+    growth: 0.1         # additional employees per SF
+    good: 0.1           # proportion of good employees
+    bad:  0.1           # proportion of bad employees
   Product:
-    offset: 100         # minimum number of products
+    offset: 1000        # minimum number of products
     growth: 0.1         # additional products per SF
     good: 0.1           # proportion of good products
     bad: 0.1            # proportion of bad products
@@ -18,13 +18,13 @@ MasterData:
       min: 0.5                 
       max: 8.5            
   Customer:
-    offset: 20          # minimum number of customers
+    offset: 50          # minimum number of customers
     growth: 0.2         # additional employees per SF
     good: 0.1           # proportion of good products
     bad: 0.1            # proportion of bad products
   Vendor:
     offset: 10          # minimum number of vendors
-    growth: 0.1         # additional vendors per SF
+    growth: 0.05        # additional vendors per SF
     good: 0.1           # proportion of good products
     bad: 0.1            # proportion of bad products
   Logistics:
@@ -34,7 +34,7 @@ MasterData:
     bad: 0.1            # proportion of bad logistics companies
 FoodBrokerage:
   Process:
-    growth: 1000        # number of simulated cases per SF
+    growth: 10000       # number of simulated cases per SF
     date:               # simulated period
       min: 2013-01-01       
       max: 2013-12-31       
