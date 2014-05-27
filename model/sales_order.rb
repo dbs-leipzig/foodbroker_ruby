@@ -13,5 +13,7 @@ class SalesOrder < ERPTransData
 
   def initialize
     super()
+    
+    DomainData.add2stats 1,3    
   end
 end

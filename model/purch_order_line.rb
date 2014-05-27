@@ -11,5 +11,7 @@ class PurchOrderLine < ERPLine
   def initialize po,product
     @part_of = po
     @contains = product
+    
+    DomainData.add2stats 0,1    
   end
 end

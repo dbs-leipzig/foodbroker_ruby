@@ -11,5 +11,7 @@ class SalesOrderLine < ERPLine
   def initialize so,product
     @part_of = so
     @contains = product
+    
+    DomainData.add2stats 0,1    
   end
 end

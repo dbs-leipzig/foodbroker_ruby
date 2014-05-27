@@ -34,14 +34,14 @@ MasterData:
     bad: 0.1            # proportion of bad logistics companies
 FoodBrokerage:
   Process:
-    growth: 100         # number of simulated cases per SF
+    growth: 1000        # number of simulated cases per SF
     date:               # simulated period
       min: 2013-01-01       
       max: 2013-12-31       
   Quotation:
     lines:              # number of lines per quotation
       min: 1                
-      max: 10               
+      max: 20               
     margin:             # sales margin
       base: 0.05            
       infl: 0.02  

@@ -6,7 +6,14 @@ class PurchOrder < ERPTransData
     duck.serves = SalesOrder.duck
     duck.placed_at = Vendor.duck
     duck.date = Date.new
+    duck.processed_by = Employee.duck
     duck
+  end
+  
+  def initialize
+    super()
+    
+    DomainData.add2stats 1,3
   end
   
   def sales2purch

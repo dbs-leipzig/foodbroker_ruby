@@ -9,4 +9,10 @@ class Quotation < ERPTransData
     duck.date = Date.new
     duck
   end
+  
+  def initialize
+    super()
+    
+    DomainData.add2stats 1,2    
+  end
 end

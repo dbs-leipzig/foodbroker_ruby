@@ -10,6 +10,8 @@ class Logistics < ERPMasterData
     @code_prefix = (@name.split(' ').first[0..1]+@name.split(' ').last[0]).upcase + ['/','#','-','_'].sample
     @code_length = rand(10..20)
     @code_has_chars = [true,false].sample
+    
+    DomainData.add2stats 1,0    
   end
   
   def rand_tracking_code

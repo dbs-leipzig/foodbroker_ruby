@@ -10,6 +10,12 @@ class DeliveryNote < ERPTransData
     duck
   end
   
+  def initialize
+    super()
+    
+    DomainData.add2stats 1,2    
+  end
+  
   def purch2delivery
     date - contains.date
   end

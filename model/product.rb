@@ -10,6 +10,8 @@ class Product < ERPMasterData
     @name = "#{NAMES[@group].sample}, #{NAMES[:product][:adj].sample} #{NAMES[:product][:adj].sample}"
     price!
     super kind
+    
+    DomainData.add2stats 1,0    
   end
   
   private

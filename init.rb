@@ -26,12 +26,6 @@ Dir.entries("names").each do |entry|
   end
 end
 
-
-# model classes
-
-# boxed_classes = []
-# ObjectSpace.each_object(Class) {|c| boxed_classes.push c}  
-
 load 'model/domain_data.rb'
 load 'model/master_data.rb'
 load 'model/trans_data.rb'
@@ -58,26 +52,18 @@ load 'model/user.rb'
 load 'model/client.rb'
 load 'model/ticket.rb'
 
-#model_classes = []
-#ObjectSpace.each_object(Class) {|c| model_classes.push c} 
-#model_classes -= boxed_classes
-
-#model_superclasses = model_classes.map {|c| c.superclass}
-#model_superclasses.uniq!  
-#model_classes -= model_superclasses
-
-#puts model_classes
-
 DUCKS = []
 ObjectSpace.each_object(Class) {|c| DUCKS.push c.duck if c.methods.include? :duck} 
-puts DUCKS.reverse
+DUCKS.reverse!
 
+DB.select! {|x| false}
 
 load 'simulation/business_process.rb'
 load 'simulation/food_brokerage.rb'
 load 'simulation/complaints.rb'
+load 'store/food_broker_2_sql.rb'
 
-DB.select! {|x| false}
+
   
 
   

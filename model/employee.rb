@@ -10,6 +10,8 @@ class Employee < ERPMasterData
     @name = "#{NAMES[@gender].sample} #{NAMES[:family].sample}"
     @position = position
     super kind
+    
+    DomainData.add2stats 1,0    
   end
 
 end

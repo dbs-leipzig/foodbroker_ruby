@@ -10,6 +10,8 @@ class User < CITMasterData
     @email = employee.name.sub(' ','.').downcase + '@foodbroker.org'
     @erp_empl_num = employee
     super()
+    
+    DomainData.add2stats 1,1    
   end
 
   def kind

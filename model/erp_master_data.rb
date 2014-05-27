@@ -13,4 +13,8 @@ class ERPMasterData < MasterData
   def num
     self.class.to_s[0..2].upcase + self.object_id.to_s
   end
+  
+  def system
+    'ERP'
+  end
 end

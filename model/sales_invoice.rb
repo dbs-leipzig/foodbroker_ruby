@@ -9,4 +9,10 @@ class SalesInvoice < ERPTransData
     duck.date = Date.new
     duck
   end
+  
+  def initialize
+    super()
+    
+    DomainData.add2stats 1,1    
+  end
 end

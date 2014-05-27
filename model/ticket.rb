@@ -9,6 +9,7 @@ class Ticket < CITTransData
     duck.created_by = User.duck
     duck.allocated_to = User.duck
     duck.opened_by = Client.duck
+    duck.problem = ""
     duck
   end
   
@@ -17,6 +18,8 @@ class Ticket < CITTransData
   def initialize
     @@id +=1
     @id = @@id
+    
+    DomainData.add2stats 1,4    
   end
   
   def pk

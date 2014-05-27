@@ -1,11 +1,10 @@
-class Client < CITTransData
+class Client < CITMasterData
   attr_accessor :erp_cust_num, :contact_phone, :name, :account
   
   def Client.duck
     Client.new Customer.duck
   end
-  
-  
+
   @@account = 0
   
   def initialize customer
@@ -13,11 +12,18 @@ class Client < CITTransData
     @account = @@account
     @erp_cust_num = customer
     @name = customer.name
-    contact_phone!        
+    contact_phone!  
+    super()
+    
+    DomainData.add2stats 1,1      
   end
   
   def pk
     :account
+  end
+  
+  def kind
+    erp_cust_num.kind
   end
   
   private

@@ -12,4 +12,8 @@ class ERPTransData < TransData
   def pk
     :num
   end
+  
+  def system
+    'ERP'
+  end
 end

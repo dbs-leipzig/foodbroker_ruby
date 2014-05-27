@@ -8,6 +8,8 @@ class Customer < ERPMasterData
   def initialize kind
     @name = "#{NAMES[:customer][:adj].sample} #{NAMES[:customer][:noun].sample} #{NAMES[:cities].sample}"
     super kind
+    
+    DomainData.add2stats 1,0
   end
   
 end

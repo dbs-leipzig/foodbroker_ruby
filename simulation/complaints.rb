@@ -21,11 +21,14 @@ class Complaints < BusinessProcess
   private
   
   def new_ticket
+    client = (DB.select {|c| (c.instance_of? Client) && c.erp_cust_num == cas.sales_order.received_from }).first
+    client = Client.new cas.sales_order.received_from if client.nil?
+    
     ticket = Ticket.new 
     ticket.erp_so_num = cas.sales_order
     ticket.created_by = (DB.select {|e| e.instance_of? User }).sample
     ticket.allocated_to = (DB.select {|e| e.instance_of? User }).sample    
-    ticket.openend_by = cas.sales_order.received_from # TODO Customer
+    ticket.opened_by = client
     tickets.push ticket
     tdos.push ticket
     ticket
@@ -78,7 +81,7 @@ class Complaints < BusinessProcess
   end
   
   def sales_refund! ticket, sales_order_lines
-    refund = variation conf['Ticket']['sales_refund'], [ticket.allocated_to,ticket.openend_by]          
+    refund = variation conf['Ticket']['sales_refund'], [ticket.allocated_to,ticket.opened_by]          
     sales_invoice = SalesInvoice.new
     sales_invoice.date = ticket.created_at
     sales_invoice.text = "Refund SO#{cas.sales_order.num} Ticket #{ticket.id}"

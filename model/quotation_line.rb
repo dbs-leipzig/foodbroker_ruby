@@ -12,5 +12,7 @@ class QuotationLine < ERPLine
   def initialize quot,product
     @part_of = quot
     @contains = product
+    
+    DomainData.add2stats 0,1    
   end
 end
