@@ -23,8 +23,6 @@ class FoodBrokerage < BusinessProcess
       delivery_notes!
       purch_invoices!  
     end   
-    
-    #self.tdos.delete_if {|tdo| (tdo.methods.include? :date && tdo.date > @max_date) || (tdo.methods.include? :part_of && tdo.part_of.date > @max_date)  }
   end
   
   private

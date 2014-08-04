@@ -71,19 +71,4 @@ class FoodBroker2Sql
   
   private
   
-#  duck.properties.each do |attribute,value|
-#    column = "#{attribute} "
-      
-#    if value.class == Float
-#      column += "FLOAT"
-#    elsif value.class == Fixnum
-#      column += "INT"
-#    elsif value.class == Date
-#      column += "DATE"
-#    else
-#      column += "VARCHAR(64)"
-#    end
-
- #   columns.push column
- # end
 end

@@ -3,7 +3,7 @@
 conf = CONF['MasterData']['Employee']
 
 [:sales_representative,:sales_editor,:purchaser].each do |position|
-  number = (conf['offset']+conf['growth'])*SF/3
+  number = conf['offset']+(conf['growth']*SF/3)
   good = (number * conf['good']).to_i
   bad = (number * conf['bad']).to_i
   normal = number.to_i - good - bad  
@@ -19,7 +19,7 @@ end
 
 conf = CONF['MasterData']['Product']
 
-number = (conf['offset']+conf['growth'])*SF  
+number = conf['offset']+(conf['growth']*SF)  
 good = (number * conf['good']).to_i
 bad = (number * conf['bad']).to_i
 normal = number.to_i - good - bad
@@ -32,7 +32,7 @@ normal.times { Product.new :normal }
   
 conf = CONF['MasterData']['Customer']
 
-number = (conf['offset']+conf['growth'])*SF  
+number = conf['offset']+(conf['growth']*SF)  
 good = (number * conf['good']).to_i
 bad = (number * conf['bad']).to_i
 normal = number.to_i - good - bad
@@ -45,7 +45,7 @@ normal.times { Customer.new :normal }
 
 conf = CONF['MasterData']['Vendor']
 
-number = (conf['offset']+conf['growth'])*SF  
+number = conf['offset']+(conf['growth']*SF)  
 good = (number * conf['good']).to_i
 bad = (number * conf['bad']).to_i
 normal = number.to_i - good - bad
@@ -58,7 +58,7 @@ normal.times { Vendor.new :normal }
 
 conf = CONF['MasterData']['Logistics']
 
-number = (conf['offset']+conf['growth'])*SF  
+number = conf['offset']+(conf['growth']*SF)  
 good = (number * conf['good']).to_i
 bad = (number * conf['bad']).to_i
 normal = number.to_i - good - bad
