@@ -54,10 +54,10 @@ class FoodBroker2Sql
   end
   
   def finish!
+
+    DUCKS.each {|duck| dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD PRIMARY KEY (`#{duck.pk}`);" if duck.methods.include? :pk}
     
     DUCKS.each do |duck|
-      dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD PRIMARY KEY (`#{duck.pk}`);" if duck.methods.include? :pk
-      
       fks = duck.properties(false).select {|k,v| v.kind_of? DomainData }
       fks.select! {|k,v| duck.system == v.system}  
       

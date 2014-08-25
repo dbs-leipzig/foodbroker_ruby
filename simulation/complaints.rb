@@ -99,6 +99,7 @@ class Complaints < BusinessProcess
     purch_invoice = PurchInvoice.new
     purch_invoice.date = ticket.created_at
     purch_invoice.text = "Refund PO#{delivery_note.contains.num} Ticket #{ticket.id}"
+    purch_invoice.created_for = delivery_note.contains
     
     purch_invoice.expense = (cas.purch_invoices.select {|pi| pi.created_for = delivery_note.contains}).first.expense
     purch_invoice.expense = (purch_invoice.expense  * -1 * refund).round 2

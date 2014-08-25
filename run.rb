@@ -10,7 +10,7 @@ log.puts "#{Time.now.strftime "%Y-%m-%d %H:%M:%S"} #{DB.size} master data object
 
 conf = CONF['FoodBrokerage']
 dates = (conf['Process']['date']['min']..conf['Process']['date']['max']).to_a
-cases = (1..conf['Process']['growth']*SF)
+cases = (1..conf['Process']['growth']*SF).to_a
   
 store = FoodBroker2Sql.new
 store.prepare!

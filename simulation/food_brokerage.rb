@@ -31,7 +31,7 @@ class FoodBrokerage < BusinessProcess
     @quotation = Quotation.new
     quotation.status = :open
     quotation.date = @start_date
-    quotation.sent_by = (DB.select {|e| (e.instance_of? Employee) && (e.position == :sales_representative)}).sample
+    quotation.sent_by = (DB.select {|e| e.instance_of? Employee}).sample
     quotation.sent_to = (DB.select {|c| c.instance_of? Customer}).sample
     tdos.push quotation
     
@@ -55,7 +55,7 @@ class FoodBrokerage < BusinessProcess
       quotation.status = :confirmed
       @sales_order = SalesOrder.new 
       sales_order.based_on = quotation
-      sales_order.processed_by = (DB.select {|e| (e.instance_of? Employee) && (e.position == :sales_editor)}).sample
+      sales_order.processed_by = (DB.select {|e| e.instance_of? Employee}).sample
       sales_order.received_from = quotation.sent_to  
       sales_order.date = quotation.date + delay(conf['SalesOrder']['days2conf'],[ quotation.sent_by,quotation.sent_to])
       sales_order.delivery_date = sales_order.date + delay(conf['SalesOrder']['days2delivery'],[ sales_order.processed_by,sales_order.received_from])
@@ -97,7 +97,7 @@ class FoodBrokerage < BusinessProcess
       
     product_groups.uniq.each do |product_group|
       purch_order = PurchOrder.new
-      purch_order.processed_by = (DB.select {|e| (e.instance_of? Employee) && (e.position == :purchaser)}).sample
+      purch_order.processed_by = (DB.select {|e| e.instance_of? Employee}).sample
       purch_order.date = sales_order.date + delay(conf['SalesOrder']['days2purchase'],[purch_order.processed_by])
       purch_order.serves = sales_order
       purch_order.placed_at = (DB.select {|v| v.instance_of? Vendor}).sample
