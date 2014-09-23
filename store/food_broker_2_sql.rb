@@ -10,6 +10,7 @@ class FoodBroker2Sql
   
 
   def prepare!  
+    dump.puts "SET autocommit=0;"
     (DUCKS.map {|d| d.system }).uniq.each do |system|
       dump.puts "DROP SCHEMA IF EXISTS `#{system}`;"
       dump.puts "CREATE SCHEMA `#{system}`;"
@@ -65,7 +66,7 @@ class FoodBroker2Sql
         dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD FOREIGN KEY (`#{attribute}`) REFERENCES `#{value.system}`.`#{value.class}` (`#{value.pk}`);" 
       end
     end
-    
+    dump.puts "COMMIT;"
     dump.close
   end
   
