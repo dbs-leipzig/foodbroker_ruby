@@ -1,8 +1,17 @@
 class DomainData
+
+  attr_reader :vid, :vids
   
   @@objects = 0
   @@relationships = 0
-  
+  @@pk = 0
+
+  def initialize
+    @@pk +=1
+    @vid = @@pk
+    @vids = []
+  end  
+
   def properties id_only=true
     attributes = instance_variables.sort.select.to_a
     attributes.map! {|a| a.to_s.delete '@'}

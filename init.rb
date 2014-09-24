@@ -2,6 +2,7 @@ require 'yaml'
 
 CONF = YAML.load_file 'config.yaml'
 SF = ARGV[ARGV.index("-s")+1].to_i
+FORMAT = ARGV[ARGV.index("-f")+1].to_sym
 DB = []
 
 NAMES = {}  
@@ -62,7 +63,7 @@ load 'simulation/business_process.rb'
 load 'simulation/food_brokerage.rb'
 load 'simulation/complaints.rb'
 load 'store/food_broker_2_sql.rb'
-
+load 'store/food_broker_2_adjacency_list.rb'
 
   
 

@@ -20,6 +20,8 @@ class Ticket < CITTransData
     @id = @@id
     
     DomainData.add2stats 1,4    
+
+    super
   end
   
   def pk

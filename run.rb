@@ -12,7 +12,11 @@ conf = CONF['FoodBrokerage']
 dates = (conf['Process']['date']['min']..conf['Process']['date']['max']).to_a
 cases = (1..conf['Process']['growth']*SF).to_a
   
-store = FoodBroker2Sql.new
+store = {
+  :mysql => FoodBroker2Sql.new,
+  :adlst => FoodBroker2AdjacencyList.new
+}[FORMAT]
+
 store.prepare!
 
 cases.each do |i|
