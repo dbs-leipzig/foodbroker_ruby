@@ -38,6 +38,7 @@ class FoodBroker2Sql
       dump.puts "DROP TABLE IF EXISTS #{duck.system}.#{duck.class};"
       dump.puts "CREATE TABLE #{duck.system}.#{duck.class} (#{columns.join ','});"
     end
+    dump.puts "COMMIT;"
   end  
   
   def record objects
@@ -52,11 +53,17 @@ class FoodBroker2Sql
       end
         dump.puts "INSERT INTO #{object.system}.#{object.class} (#{columns.join ','}) VALUES (#{values.join ','});"
     end
+    dump.puts "COMMIT;"
   end
   
   def finish!
 
-    DUCKS.each {|duck| dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD PRIMARY KEY (`#{duck.pk}`);" if duck.methods.include? :pk}
+    DUCKS.each do |duck|
+      if duck.methods.include? :pk
+        dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD PRIMARY KEY (`#{duck.pk}`);"
+        dump.puts "COMMIT;"
+      end
+    end
     
     DUCKS.each do |duck|
       fks = duck.properties(false).select {|k,v| v.kind_of? DomainData }
@@ -64,9 +71,9 @@ class FoodBroker2Sql
       
       fks.each do |attribute,value|
         dump.puts "ALTER TABLE `#{duck.system}`.`#{duck.class}` ADD FOREIGN KEY (`#{attribute}`) REFERENCES `#{value.system}`.`#{value.class}` (`#{value.pk}`);" 
+        dump.puts "COMMIT;"
       end
     end
-    dump.puts "COMMIT;"
     dump.close
   end
   
