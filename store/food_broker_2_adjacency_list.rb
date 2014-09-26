@@ -17,7 +17,7 @@ class FoodBroker2AdjacencyList
         domain_objects = []
         object.properties(false).each {|c,v|domain_objects.push v if v.kind_of? DomainData}
         domain_objects.first.vids.push domain_objects.last.vid        
-        domain_objects.last.vids.push domain_objects.first.vid        
+        domain_objects.last.vids.push domain_objects.first.vid 
       else
         object.properties(false).each do |column,value|
           if value.kind_of? DomainData

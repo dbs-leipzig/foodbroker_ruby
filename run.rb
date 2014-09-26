@@ -1,6 +1,6 @@
 load 'init.rb'
 
-log = File.new "foodbroker_#{SF}.log", 'w'
+log = File.new "foodbroker_#{SF}_#{FORMAT}.log", 'w'
 
 log.puts "#{Time.now.strftime "%Y-%m-%d %H:%M:%S"} start"
 

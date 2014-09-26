@@ -1,6 +1,6 @@
-.project
-.buildpath
-.sql
-.log
-.adl
-~
+*.project
+*.buildpath
+*.sql
+*.log
+*.adl
+*~
